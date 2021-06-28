@@ -22,6 +22,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.android.marsrealestate.overview.OverviewViewModel" />
@@ -30,19 +31,140 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/background_color"
         tools:context="com.example.android.marsrealestate.MainActivity">
+
+        <View
+            android:id="@+id/header_view"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/header_background"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_mars"
+            android:layout_width="120dp"
+            android:layout_height="70dp"
+            android:src="@drawable/mars_icon"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@id/header_view"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="MARS REAL ESTATE"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_mars"
+            app:layout_constraintTop_toTopOf="@id/header_view" />
+
+        <TextView
+            android:id="@+id/tv_filter_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="Choose Your Favourite Filter"
+            android:textColor="?attr/text_color"
+            android:textSize="12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@id/iv_mars"
+            app:layout_constraintTop_toBottomOf="@id/iv_mars" />
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_btn"
+            android:layout_width="40dp"
+            android:layout_height="18dp"
+            android:layout_marginRight="10dp"
+            android:thumb="@drawable/thumb"
+            app:track="@drawable/track"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/header_view"
+            app:layout_constraintTop_toTopOf="@id/tv_filter_header"
+            app:layout_constraintTop_toBottomOf="@id/iv_mars"/>
+
+        <RadioGroup
+            android:id="@+id/rg_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_filter_header"
+            app:layout_constraintTop_toBottomOf="@id/tv_filter_header">
+
+            <RadioButton
+                android:id="@+id/filter_all"
+                android:layout_width="50dp"
+                android:layout_height="22dp"
+                android:button="@android:color/transparent"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/radio_txt_color"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="15dp"
+                android:checked="true"
+                android:text="All"
+                />
+
+            <RadioButton
+                android:id="@+id/filter_rent"
+                android:layout_width="50dp"
+                android:layout_height="22dp"
+                android:button="@android:color/transparent"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/radio_txt_color"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                android:layout_marginRight="15dp"
+                android:text="Rent" />
+
+            <RadioButton
+                android:id="@+id/filter_buy"
+                android:layout_width="50dp"
+                android:layout_height="22dp"
+                android:button="@android:color/transparent"
+                android:background="@drawable/radio_selector"
+                android:textColor="@drawable/radio_txt_color"
+                android:textSize="12sp"
+                android:textAlignment="center"
+                android:text="Buy" />
+        </RadioGroup>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="15dp"
+            android:background="#B4B4B4"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@id/photos_grid"
+            app:layout_constraintTop_toBottomOf="@id/rg_filter" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/photos_grid"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:padding="6dp"
-            android:clipToPadding="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="9dp"
+            android:layout_marginRight="5dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
             app:listData="@{viewModel.properties}"
             app:spanCount="2"
             tools:itemCount="16"

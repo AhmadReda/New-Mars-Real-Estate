@@ -18,11 +18,17 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.Light" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="background_color">@color/light_background</item>
+        <item name="background_color_active">@color/light_background_active</item>
+        <item name="text_color">@color/light_text_color</item>
+        <item name="text_color_active">@color/light_text_color_active</item>
+        <item name="stroke_color">@color/light_stroke_color</item>
     </style>
 
 </resources>

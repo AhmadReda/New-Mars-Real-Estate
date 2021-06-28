@@ -25,13 +25,48 @@
             name="property"
             type="com.example.android.marsrealestate.network.MarsProperty" />
     </data>
-    <ImageView
-        android:id="@+id/mars_image"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:scaleType="centerCrop"
-        android:adjustViewBounds="true"
-        android:padding="2dp"
-        app:imageUrl="@{property.imgSrcUrl}"
-        tools:src="@tools:sample/backgrounds/scenic"/>
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#FF794F"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageView
+                android:id="@+id/mars_image"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                app:imageUrl="@{property.imgSrcUrl}"
+                tools:src="@tools:sample/backgrounds/scenic"/>
+            <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{property.type}"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="8dp"
+                tools:text="For Sale"
+                />
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{property.stringPrice}"
+                android:textColor="#F6F6F6"
+                android:textSize="12sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="5dp"
+                tools:text="Price: $450,000"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 </layout>
