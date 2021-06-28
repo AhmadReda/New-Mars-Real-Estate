@@ -17,17 +17,43 @@
 
 package com.example.android.marsrealestate
 
+import android.os.Build
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : AppCompatActivity() {
+
 
     /**
      * Our MainActivity is only responsible for setting the content view that contains the
      * Navigation Host.
      */
     override fun onCreate(savedInstanceState: Bundle?) {
+        if(AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES){
+            setTheme(R.style.Theme_Dark)
+        }else{
+            setTheme(R.style.Theme_Light)
+        }
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        hideStatusBar()
+    }
+
+    private fun hideStatusBar(){
+        // If the Android version is lower than Jellybean, use this call to hide
+        // the status bar.
+        if (Build.VERSION.SDK_INT < 16) {
+            window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        } else {
+            // Hide the status bar.
+            window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+            // Remember that you should never show the action bar if the
+            // status bar is hidden, so hide that too if necessary.
+            actionBar?.hide()
+        }
     }
 }

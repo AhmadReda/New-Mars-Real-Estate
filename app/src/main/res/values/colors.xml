@@ -18,7 +18,19 @@
   -->
 
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#FF794F</color>
+    <color name="colorPrimaryDark">#FF794F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="light_background">#FFFFFF</color>
+    <color name="light_background_active">#FF794F</color>
+    <color name="light_text_color">#000000</color>
+    <color name="light_text_color_active">#FFFFFF</color>
+    <color name="light_stroke_color">#EBEBEB</color>
+
+    <color name="dark_background">#000000</color>
+    <color name="dark_background_active">#FF794F</color>
+    <color name="dark_text_color">#FFFFFF</color>
+    <color name="dark_stroke_color">#FF794F</color>
+
 </resources>
